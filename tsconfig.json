@@ -23,7 +23,8 @@
     "baseUrl": "src",
     "paths": {
       "@components/*": ["components/*"],
-      "@types": ["types.ts"]
+      "@types": ["types.ts"],
+      "@utils/*": ["utils/*"]
     },
     "types": ["node"]
   },
