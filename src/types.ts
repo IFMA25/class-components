@@ -13,8 +13,18 @@ export type Data = {
 };
 
 export type WikiData = {
-    code: string;
-    currencyCodes: string[];
-    name: string;
-    wikiDataId: string
+  code: string;
+  currencyCodes: string[];
+  name: string;
+  wikiDataId: string;
+};
+
+
+export type AppState = {
+  currentPage: number;
+}
+
+export type PaginationProps = {
+  currentPage: number;
+  changePage: (page: number) => void;
 }
