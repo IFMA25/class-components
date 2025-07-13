@@ -19,12 +19,18 @@ export type WikiData = {
   wikiDataId: string;
 };
 
-
 export type AppState = {
   currentPage: number;
-}
+   totalPages: number;
+};
 
 export type PaginationProps = {
   currentPage: number;
+  totalPages: number;
   changePage: (page: number) => void;
+};
+
+export type CardListProps = {
+  currentPage: number;
+  onTotalPage: (totalPages: number) => void;
 }

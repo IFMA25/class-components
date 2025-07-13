@@ -10,12 +10,14 @@ class Pagination extends Component<PaginationProps> {
   };
 
   handleNextClick = () => {
-    const { currentPage, changePage } = this.props;
-    changePage(currentPage + 1);
+    const { currentPage, changePage, totalPages } = this.props;
+    if (currentPage + 1 < totalPages) {
+      changePage(currentPage + 1);
+    }
   };
 
   render() {
-    const { currentPage } = this.props;
+    const { currentPage, totalPages } = this.props;
 
     return (
       <div className="pagination">
@@ -23,7 +25,7 @@ class Pagination extends Component<PaginationProps> {
           {'<<'}
         </button>
         <span className="current-page">{currentPage + 1}</span>
-        <button onClick={this.handleNextClick}>{'>>'}</button>
+        <button onClick={this.handleNextClick} disabled={currentPage + 1 >= totalPages}>{'>>'}</button>
       </div>
     );
   }

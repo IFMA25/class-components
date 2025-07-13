@@ -5,12 +5,12 @@ import CardList from '@components/CardList';
 import Pagination from '@components/Pagination';
 import { AppState } from '@types';
 
-
-class App extends Component<{}, AppState> {
+class App extends Component<Record<string, never>, AppState> {
   cardListRef = createRef<CardList>();
-  
+
   state: AppState = {
     currentPage: Number(localStorage.getItem('page')) || 0,
+     totalPages: 1
   };
 
   handlePageChange = (newPage: number) => {
@@ -26,18 +26,24 @@ class App extends Component<{}, AppState> {
     });
   };
 
+  handleTotalPagesChange = (totalPages: number) => {
+    this.setState({ totalPages });
+  };
+
   render() {
     return (
       <>
         <Header onSearch={this.handleSearch} />
         <main>
-          <CardList 
-            ref={this.cardListRef} 
-            currentPage={this.state.currentPage} 
+          <CardList
+            ref={this.cardListRef}
+            currentPage={this.state.currentPage}
+            onTotalPage={this.handleTotalPagesChange}
           />
         </main>
-        <Pagination 
+        <Pagination
           currentPage={this.state.currentPage}
+          totalPages={this.state.totalPages}
           changePage={this.handlePageChange}
         />
       </>
