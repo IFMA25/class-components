@@ -5,8 +5,8 @@
   text-align: center;
   width: 100%;
 }
-@media (max-width: 885px){
-   #root{
+@media (max-width: 885px) {
+  #root {
     padding: 15px;
-   }
+  }
 }

@@ -25,7 +25,12 @@ class Pagination extends Component<PaginationProps> {
           {'<<'}
         </button>
         <span className="current-page">{currentPage + 1}</span>
-        <button onClick={this.handleNextClick} disabled={currentPage + 1 >= totalPages}>{'>>'}</button>
+        <button
+          onClick={this.handleNextClick}
+          disabled={currentPage + 1 >= totalPages}
+        >
+          {'>>'}
+        </button>
       </div>
     );
   }

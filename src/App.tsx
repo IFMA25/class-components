@@ -10,7 +10,7 @@ class App extends Component<Record<string, never>, AppState> {
 
   state: AppState = {
     currentPage: Number(localStorage.getItem('page')) || 0,
-     totalPages: 1
+    totalPages: 1,
   };
 
   handlePageChange = (newPage: number) => {

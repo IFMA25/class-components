@@ -7,10 +7,7 @@ const LIMIT = 6;
 const API_KEY = 'd5ebf57eb0msh4ef41a534f69977p199d40jsna3a04db98b72';
 const API_HOST = 'wft-geo-db.p.rapidapi.com';
 
-
-
 class CardList extends Component<CardListProps, Data> {
-
   state: Data = {
     result: [],
   };
@@ -33,35 +30,35 @@ class CardList extends Component<CardListProps, Data> {
       ? `https://wft-geo-db.p.rapidapi.com/v1/geo/countries?&limit=${LIMIT}&namePrefix=${value}`
       : `https://wft-geo-db.p.rapidapi.com/v1/geo/countries?offset=${offset}&limit=${LIMIT}`;
 
-      const res = await fetch(urlApi, {
-        headers: {
-          'X-RapidAPI-Key': API_KEY,
-          'X-RapidAPI-Host': API_HOST,
-        },
-      });
+    const res = await fetch(urlApi, {
+      headers: {
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': API_HOST,
+      },
+    });
 
-      const fetchData = await res.json();
+    const fetchData = await res.json();
 
-      if (!Array.isArray(fetchData.data)) {
-        return;
-      }
+    if (!Array.isArray(fetchData.data)) {
+      return;
+    }
 
-      const totalPages = Math.ceil(fetchData.metadata.totalCount / LIMIT);
-      this.props.onTotalPage(totalPages);
+    const totalPages = Math.ceil(fetchData.metadata.totalCount / LIMIT);
+    this.props.onTotalPage(totalPages);
 
-      const countries = await Promise.all(
-        fetchData.data.map(async (item: WikiData) => {
-          const wikidataInfo = await fetchWikidataInfo(item.wikiDataId);
-          return {
-            name: item.name,
-            flag: `https://flagcdn.com/w320/${item.code.toLowerCase()}.png`,
-            capital: wikidataInfo.capitalName || 'N/A',
-            population: wikidataInfo.population || 'N/A',
-          };
-        })
-      );
+    const countries = await Promise.all(
+      fetchData.data.map(async (item: WikiData) => {
+        const wikidataInfo = await fetchWikidataInfo(item.wikiDataId);
+        return {
+          name: item.name,
+          flag: `https://flagcdn.com/w320/${item.code.toLowerCase()}.png`,
+          capital: wikidataInfo.capitalName || 'N/A',
+          population: wikidataInfo.population || 'N/A',
+        };
+      })
+    );
 
-      this.setState({ result: countries });
+    this.setState({ result: countries });
   };
 
   render() {
@@ -69,13 +66,13 @@ class CardList extends Component<CardListProps, Data> {
       <ul className="card-list">
         {this.state.result.map((item, index) => (
           <li key={index}>
-            <div className='card-img'>
-                <img src={item.flag} alt={item.name} />
+            <div className="card-img">
+              <img src={item.flag} alt={item.name} />
             </div>
-            <div className='card-info'>
-                <h3>{item.name}</h3>
-                <p>Capital: {item.capital}</p>
-                <p>Population: {item.population}</p>
+            <div className="card-info">
+              <h3>{item.name}</h3>
+              <p>Capital: {item.capital}</p>
+              <p>Population: {item.population}</p>
             </div>
           </li>
         ))}
