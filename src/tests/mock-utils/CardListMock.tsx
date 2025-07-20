@@ -1,7 +1,5 @@
 import React from 'react';
-import { vi } from 'vitest';
-
-export const searchDataMock = vi.fn();
+import { searchDataMock } from './SearchDataMock';
 
 export const CardListMock = React.forwardRef((props, ref) => {
   React.useImperativeHandle(ref, () => ({

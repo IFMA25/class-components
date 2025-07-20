@@ -1,8 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { PaginationProps } from '@types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { CardListMock, searchDataMock } from './mock-utils/CardListMock';
+import { CardListMock } from './mock-utils/CardListMock';
 import App from '../App';
+import { searchDataMock } from './mock-utils/SearchDataMock';
 
 vi.mock('@components/CardList', () => ({
   default: CardListMock,
