@@ -10,8 +10,5 @@ if (rootElement) {
     <StrictMode>
       <App />
     </StrictMode>
-  )
+  );
 }
-
-
-

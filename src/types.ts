@@ -21,7 +21,7 @@ export type WikiData = {
 
 export type AppState = {
   currentPage: number;
-   totalPages: number;
+  totalPages: number;
 };
 
 export type PaginationProps = {
@@ -33,4 +33,4 @@ export type PaginationProps = {
 export type CardListProps = {
   currentPage: number;
   onTotalPage: (totalPages: number) => void;
-}
+};
