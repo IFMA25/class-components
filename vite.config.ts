@@ -33,7 +33,6 @@ export default defineConfig({
         'src/**/*.d.ts',
         'src/main.tsx',
         'src/types.ts',
-        'src/utils/**',
       ],
       thresholds: {
         global: {

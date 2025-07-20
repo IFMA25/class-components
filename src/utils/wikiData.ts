@@ -6,8 +6,12 @@ export default async function fetchWikidataInfo(wikiDataId: string) {
   const res = await fetch(url);
   const data = await res.json();
 
-  const claims = data.entities[wikiDataId].claims;
+  const entity = data.entities?.[wikiDataId];
+  if (!entity || !entity.claims) {
+    return { capitalName: null, population: null };
+  }
 
+  const claims = entity.claims;
   const capitalClaim = claims[CODE_CAPITAL]?.[0];
   const capitalId = capitalClaim?.mainsnak.datavalue?.value?.id;
 

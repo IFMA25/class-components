@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Pagination.tsx</title>
+    <title>Code coverage report for src/utils/wikiData.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Pagination.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/utils</a> wikiData.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/31</span>
+                <span class='fraction'>29/29</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>31/31</span>
+                <span class='fraction'>29/29</span>
             </div>
         
             
@@ -100,86 +100,80 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { PaginationProps } from '@types';
-import { Component } from 'react';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const CODE_CAPITAL = 'P36';
+const CODE_POPULATION = 'P1082';
 &nbsp;
-class Pagination extends Component&lt;PaginationProps&gt; {
-  handlePrevClick = () =&gt; {
-    const { currentPage, changePage } = this.props;
-    if (currentPage &gt; 0) {
-      changePage(currentPage - 1);
-    }
-  };
+export default async function fetchWikidataInfo(wikiDataId: string) {
+  const url = `https://www.wikidata.org/wiki/Special:EntityData/${wikiDataId}.json`;
+  const res = await fetch(url);
+  const data = await res.json();
 &nbsp;
-  handleNextClick = () =&gt; {
-    const { currentPage, changePage, totalPages } = this.props;
-    if (currentPage + 1 &lt; totalPages) {
-      changePage(currentPage + 1);
-    }
-  };
-&nbsp;
-  render() {
-    const { currentPage, totalPages } = this.props;
-&nbsp;
-    return (
-      &lt;div className="pagination"&gt;
-        &lt;button onClick={this.handlePrevClick} disabled={currentPage === 0}&gt;
-          {'&lt;&lt;'}
-        &lt;/button&gt;
-        &lt;span className="current-page"&gt;{currentPage + 1}&lt;/span&gt;
-        &lt;button
-          onClick={this.handleNextClick}
-          disabled={currentPage + 1 &gt;= totalPages}
-        &gt;
-          {'&gt;&gt;'}
-        &lt;/button&gt;
-      &lt;/div&gt;
-    );
+  const entity = data.entities?.[wikiDataId];
+  if (!entity || !entity.claims) {
+    return { capitalName: null, population: null };
   }
-}
 &nbsp;
-export default Pagination;
+  const claims = entity.claims;
+  const capitalClaim = claims[CODE_CAPITAL]?.[0];
+  const capitalId = capitalClaim?.mainsnak.datavalue?.value?.id;
+&nbsp;
+  const populationClaim = claims[CODE_POPULATION]?.[0];
+&nbsp;
+  let population: number | null = null;
+  if (populationClaim) {
+    const popValue = populationClaim.mainsnak.datavalue.value;
+    population = popValue.amount ? parseInt(popValue.amount<span class="branch-0 cbranch-no" title="branch not covered" >) : null;</span>
+  }
+&nbsp;
+  let capitalName: string | null = null;
+  if (capitalId) {
+    const capitalUrl = `https://www.wikidata.org/wiki/Special:EntityData/${capitalId}.json`;
+    const capitalRes = await fetch(capitalUrl);
+    const capitalData = await capitalRes.json();
+&nbsp;
+    const capitalEntity = capitalData.entities[capitalId];
+    capitalName = capitalEntity?.labels?.en?.<span class="branch-0 cbranch-no" title="branch not covered" >value || null;</span>
+  }
+&nbsp;
+  return { capitalName, population };
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
