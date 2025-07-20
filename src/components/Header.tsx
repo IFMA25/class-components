@@ -22,7 +22,7 @@ class Header extends Component<HeaderProps> {
               ref={this.inputRef}
             />
           </label>
-          <button type="submit" className="button-search">
+          <button type="submit" className="button-search" data-testid="search">
             Search
           </button>
         </form>
