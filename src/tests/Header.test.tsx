@@ -20,10 +20,10 @@ describe('Header', () => {
   });
 
   it('local storage content is displayed in the search input', () => {
-    localStorage.setItem('value', 'Ukraine');
+    localStorage.setItem('value', 'Test Country');
     render(<Header onSearch={onSearch} />);
 
-    expect(screen.getByRole('textbox')).toHaveValue('Ukraine');
+    expect(screen.getByRole('textbox')).toHaveValue('Test Country');
   });
 
   it('if localStorage is empty that search value is empty too', () => {

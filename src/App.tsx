@@ -14,9 +14,11 @@ class App extends Component<Record<string, never>, AppState> {
   };
 
   handlePageChange = (newPage: number) => {
+    console.log('handlePageChange', newPage, this.cardListRef.current);
     localStorage.setItem('page', newPage.toString());
     this.setState({ currentPage: newPage }, () => {
       this.cardListRef.current?.searchData();
+      console.log('searchData called');
     });
   };
 
