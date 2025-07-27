@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import Search from './Search';
 import CardList from '@components/CardList';
 import Pagination from '@components/Pagination';
+import CountryCart from '@components/CountryCart';
 import { useCountriesData } from '@utils/useCountriesData';
 import './Home.css';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 function Home() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [totalPages, setTotalPages] = useState(0);
   const [searchValue, setSearchValue] = useState(() => {
     return localStorage.getItem('value') || '';
@@ -16,8 +17,18 @@ function Home() {
   const { searchData, result } = useCountriesData({
     onTotalPage: setTotalPages,
   });
-  const location = useLocation();
-  const isCountryPage = location.pathname.includes('/country/');
+
+  useEffect(() => {
+    if (!searchParams.has('page')) {
+      setSearchParams({ page: '1' });
+    }
+  }, []);
+
+  const details = searchParams.get('details');
+  const currentPage = Math.max(
+    0,
+    parseInt(searchParams.get('page') || '1', 10) - 1
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -27,30 +38,50 @@ function Home() {
   const handleSearch = (value: string) => {
     setSearchValue(value);
     localStorage.setItem('value', value);
-    setCurrentPage(0);
+    setSearchParams({ page: '1' });
   };
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
+    const params: Record<string, string> = { page: (newPage + 1).toString() };
+    if (details) params.details = details;
+    setSearchParams(params);
   };
+
+  const setDetails = (value: string | null) => {
+    const params: Record<string, string> = {
+      page: (currentPage + 1).toString(),
+    };
+    if (value) params.details = value;
+    setSearchParams(params);
+  };
+
+  const isCountryPage = Boolean(details);
 
   return (
     <main>
       <div className="country-list">
         <Search onSearch={handleSearch} />
-        {loading && <p>Loading...</p>}
-        {!loading && result.length > 0 && <CardList data={result} />}
-        {!loading && result.length === 0 && <p>Country not found</p>}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          changePage={handlePageChange}
-        />
+        {loading && <p className="loader">Loading...</p>}
+        {!loading && result.length > 0 && (
+          <>
+            <CardList data={result} setDetails={setDetails} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              changePage={handlePageChange}
+            />
+          </>
+        )}
+        {!loading && result.length === 0 && <p className='result-found'>Country not found</p>}
       </div>
 
       {isCountryPage && (
         <div className="country-details">
-          <Outlet context={{ data: result }} />
+          <CountryCart
+            details={details}
+            data={result}
+            setDetails={setDetails}
+          />
         </div>
       )}
     </main>

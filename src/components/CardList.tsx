@@ -1,21 +1,16 @@
-import { CardListProps } from '@types';
-import { useNavigate } from 'react-router-dom';
+import { ItemData } from '@types';
 import './style.css';
 
-function CardList({ data }: CardListProps) {
-  const navigate = useNavigate();
+type CardListProps = {
+  data: ItemData[];
+  setDetails: (name: string) => void;
+};
 
-  const handleClick = (name: string) => {
-    navigate(`country/${encodeURIComponent(name.toLowerCase())}`, {
-      relative: 'path',
-      replace: true,
-    });
-  };
-
+function CardList({ data, setDetails }: CardListProps) {
   return (
     <ul className="card-list">
-      {data.map((item, index) => (
-        <li key={index} onClick={() => handleClick(item.name)}>
+      {data.map((item) => (
+        <li key={item.name} onClick={() => setDetails(item.name)}>
           <div className="card-img">
             <img src={item.flag} alt={item.name} />
           </div>

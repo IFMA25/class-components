@@ -1,17 +1,22 @@
-import { CardListProps } from '@types';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { ItemData } from '@types';
 
-function CountryCart() {
-  const { countryName } = useParams<{ countryName: string }>();
-  const { data } = useOutletContext<CardListProps>();
-  const navigate = useNavigate();
+type CountryCartProps = {
+  details: string | null;
+  data: ItemData[];
+  setDetails: (value: string | null) => void;
+};
+
+function CountryCart({ details, data, setDetails }: CountryCartProps) {
+  if (!data) return <div>Loading...</div>;
+  if (!details) return null;
 
   const handleClose = () => {
-    navigate('/', { replace: true });
+    setDetails(null);
   };
 
-  if (!data) return <div>Loading...</div>;
-  const country = data.find((c) => c.name.toLowerCase() === countryName);
+  const country = data.find(
+    (c) => c.name.toLowerCase() === details.toLowerCase()
+  );
   if (!country) return <div>Country not found</div>;
 
   return (
