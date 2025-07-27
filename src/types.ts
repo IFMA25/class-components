@@ -1,8 +1,8 @@
 export type HeaderProps = {
-  onSearch: () => void;
+  onSearch: (value: string) => void;
 };
 
-type ItemData = {
+export type ItemData = {
   name: string;
   flag: string;
   capital: string;
@@ -31,6 +31,9 @@ export type PaginationProps = {
 };
 
 export type CardListProps = {
-  currentPage: number;
-  onTotalPage: (totalPages: number) => void;
+  data: ItemData[];
+};
+
+export type SearchProps = {
+  onSearch: (value: string) => void;
 };

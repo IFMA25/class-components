@@ -1,34 +1,24 @@
-import { Component, createRef } from 'react';
-import type { HeaderProps } from '@types';
+import { NavLink } from 'react-router-dom';
 
-class Header extends Component<HeaderProps> {
-  inputRef = createRef<HTMLInputElement>();
-
-  handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    localStorage.setItem('value', this.inputRef.current?.value || '');
-    this.props.onSearch();
-  };
-  render() {
-    return (
-      <header className="header">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <p className="label-search">Enter country name</p>
-            <input
-              type="text"
-              className="input-search"
-              defaultValue={localStorage.getItem('value') || ''}
-              ref={this.inputRef}
-            />
-          </label>
-          <button type="submit" className="button-search" data-testid="search">
-            Search
-          </button>
-        </form>
-      </header>
-    );
-  }
+function Header() {
+  return (
+    <header className="header">
+      <nav className="header-nav">
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? 'link active' : 'link')}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? 'link active' : 'link')}
+        >
+          About
+        </NavLink>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;
