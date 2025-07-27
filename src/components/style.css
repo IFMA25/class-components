@@ -1,4 +1,4 @@
-.header{
+.header {
   position: fixed;
   background-color: whitesmoke;
   width: 100%;
@@ -9,7 +9,7 @@
   z-index: 10;
 }
 
-.header-nav{
+.header-nav {
   font-size: 48px;
   display: flex;
   justify-content: center;
@@ -17,18 +17,18 @@
   gap: 50px;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: #020b29;
   font-weight: 600;
 }
 
-.link.active{
+.link.active {
   color: #0d6efd;
   border-bottom: 2px solid #0d6efd;
 }
 
-.link:hover{
+.link:hover {
   color: #0d6efd;
 }
 
@@ -47,7 +47,7 @@
 }
 .card-list li {
   width: calc(100% / 3 - 20px);
-  min-height: 345px;
+  min-height: 250px;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -56,6 +56,10 @@
   background-color: whitesmoke;
   color: black;
   height: 100%;
+}
+
+.card-info h3{
+  font-size: 32px;
 }
 .card-img {
   width: 100%;
@@ -85,8 +89,6 @@
   font-size: 18px;
   font-weight: 600;
 }
-
-
 
 @media (max-width: 885px) {
   .card-list li {

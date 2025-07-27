@@ -6,7 +6,10 @@ function CardList({ data }: CardListProps) {
   const navigate = useNavigate();
 
   const handleClick = (name: string) => {
-    navigate(`/countries/${encodeURIComponent(name.toLowerCase())}`);
+    navigate(`country/${encodeURIComponent(name.toLowerCase())}`, {
+      relative: 'path',
+      replace: true,
+    });
   };
 
   return (

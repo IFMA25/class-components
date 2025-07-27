@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Home />}>
           <Route path="country/:countryName" element={<CountryCart />} />
         </Route>
-        <Route path="/about" element={<About />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </>
   );

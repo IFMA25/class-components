@@ -4,7 +4,7 @@ import CardList from '@components/CardList';
 import Pagination from '@components/Pagination';
 import { useCountriesData } from '@utils/useCountriesData';
 import './Home.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 function Home() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -16,6 +16,8 @@ function Home() {
   const { searchData, result } = useCountriesData({
     onTotalPage: setTotalPages,
   });
+  const location = useLocation();
+  const isCountryPage = location.pathname.includes('/country/');
 
   useEffect(() => {
     setLoading(true);
@@ -33,32 +35,25 @@ function Home() {
   };
 
   return (
-    <>
-      <main>
-        <div>
-          <Search onSearch={handleSearch} />
-          {loading && (
-            <p className="loader">
-              Loading<span>.</span>
-              <span>.</span>
-              <span>.</span>
-            </p>
-          )}
+    <main>
+      <div className="country-list">
+        <Search onSearch={handleSearch} />
+        {loading && <p>Loading...</p>}
         {!loading && result.length > 0 && <CardList data={result} />}
-          {!loading && result.length === 0 && (
-            <p className="result-found">Country not found</p>
-        )}
-      </div>
-      <Pagination
+        {!loading && result.length === 0 && <p>Country not found</p>}
+        <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           changePage={handlePageChange}
         />
-    </main>
-      <div>
-      <Outlet context={{ countries: result }} />
       </div>
-  </>
+
+      {isCountryPage && (
+        <div className="country-details">
+          <Outlet context={{ data: result }} />
+        </div>
+      )}
+    </main>
   );
 }
 
