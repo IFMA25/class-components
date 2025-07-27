@@ -50,7 +50,14 @@
   min-height: 250px;
   border-radius: 20px;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.card-list li:hover {
+  box-shadow: 0 0px 3px 3px rgb(255, 255, 255);
+}
+
 .card-info {
   padding: 15px;
   background-color: whitesmoke;

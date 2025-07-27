@@ -72,7 +72,9 @@ function Home() {
             />
           </>
         )}
-        {!loading && result.length === 0 && <p className='result-found'>Country not found</p>}
+        {!loading && result.length === 0 && (
+          <p className="result-found">Country not found</p>
+        )}
       </div>
 
       {isCountryPage && (
