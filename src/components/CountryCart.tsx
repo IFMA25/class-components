@@ -1,10 +1,4 @@
-import { ItemData } from '@types';
-
-type CountryCartProps = {
-  details: string | null;
-  data: ItemData[];
-  setDetails: (value: string | null) => void;
-};
+import { CountryCartProps } from '@types';
 
 function CountryCart({ details, data, setDetails }: CountryCartProps) {
   if (!data) return <div>Loading...</div>;

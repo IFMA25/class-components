@@ -1,10 +1,5 @@
-import { ItemData } from '@types';
+import { CardListProps } from '@types';
 import './style.css';
-
-type CardListProps = {
-  data: ItemData[];
-  setDetails: (name: string) => void;
-};
 
 function CardList({ data, setDetails }: CardListProps) {
   return (

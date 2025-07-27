@@ -30,10 +30,17 @@ export type PaginationProps = {
   changePage: (page: number) => void;
 };
 
-export type CardListProps = {
-  data: ItemData[];
-};
-
 export type SearchProps = {
   onSearch: (value: string) => void;
+};
+
+export type CardListProps = {
+  data: ItemData[];
+  setDetails: (name: string) => void;
+};
+
+export type CountryCartProps = {
+  details: string | null;
+  data: ItemData[];
+  setDetails: (value: string | null) => void;
 };
