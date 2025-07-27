@@ -6,13 +6,13 @@ import CountryCart from '@components/CountryCart';
 import { useCountriesData } from '@utils/useCountriesData';
 import './Home.css';
 import { useSearchParams } from 'react-router-dom';
+import { useLocalStorage } from '@utils/useLocalStorage';
 
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalPages, setTotalPages] = useState(0);
-  const [searchValue, setSearchValue] = useState(() => {
-    return localStorage.getItem('value') || '';
-  });
+  const [searchValue, setSearchValue] = useLocalStorage('value', '');
+
   const [loading, setLoading] = useState(false);
   const { searchData, result } = useCountriesData({
     onTotalPage: setTotalPages,
@@ -37,7 +37,6 @@ function Home() {
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
-    localStorage.setItem('value', value);
     setSearchParams({ page: '1' });
   };
 
@@ -60,7 +59,7 @@ function Home() {
   return (
     <main>
       <div className="country-list">
-        <Search onSearch={handleSearch} />
+        <Search onSearch={handleSearch} value={searchValue} />
         {loading && <p className="loader">Loading...</p>}
         {!loading && result.length > 0 && (
           <>

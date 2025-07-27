@@ -1,15 +1,18 @@
 import { SearchProps } from '@types';
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-function Search({ onSearch }: SearchProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+function Search({ onSearch, value }: SearchProps & { value: string }) {
+  const [inputValue, setInputValue] = useState(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const inputValue = inputRef.current?.value || '';
-    localStorage.setItem('value', inputValue);
-    onSearch(inputValue);
+    onSearch(inputValue.trim());
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -17,8 +20,8 @@ function Search({ onSearch }: SearchProps) {
         <input
           type="text"
           className="input-search"
-          defaultValue={localStorage.getItem('value') || ''}
-          ref={inputRef}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
         />
       </label>
       <button type="submit" className="button-search" data-testid="search">
