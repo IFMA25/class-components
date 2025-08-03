@@ -13,6 +13,7 @@ export default defineConfig({
       '@types': path.resolve(__dirname, 'src/types.ts'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@tests': path.resolve(__dirname, 'src/__tests__'),
+      '@store': path.resolve(__dirname, 'src/store'),
     },
   },
 

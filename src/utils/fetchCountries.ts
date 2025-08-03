@@ -34,6 +34,7 @@ export async function fetchCountries(value: string, page: number) {
       };
     })
   );
+  console.log(countries, fetchData.metadata.totalCount);
 
   return {
     countries,

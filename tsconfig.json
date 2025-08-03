@@ -24,7 +24,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@types": ["types.ts"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@store/*": ["store/*"],
     },
     "types": ["node"]
   },

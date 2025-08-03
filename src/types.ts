@@ -36,7 +36,7 @@ export type SearchProps = {
 
 export type CardListProps = {
   data: ItemData[];
-  setDetails: (name: string) => void;
+  setDetails?: (name: string) => void;
 };
 
 export type CountryCartProps = {
@@ -48,4 +48,9 @@ export type CountryCartProps = {
 export type ThemeContextType = {
   theme: string;
   toggleTheme: () => void;
+};
+
+export type Store = {
+  selected: string[];
+  toggleSelected: (name: string) => void;
 };
