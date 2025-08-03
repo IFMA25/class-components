@@ -25,7 +25,7 @@
       "@components/*": ["components/*"],
       "@types": ["types.ts"],
       "@utils/*": ["utils/*"],
-      "@store/*": ["store/*"],
+      "@store/*": ["store/*"]
     },
     "types": ["node"]
   },

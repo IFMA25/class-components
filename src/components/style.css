@@ -63,6 +63,7 @@
   padding: 0;
 }
 .card-list li {
+  position: relative;
   width: calc(100% / 3 - 20px);
   min-height: 250px;
   border-radius: 20px;
@@ -129,6 +130,38 @@
 .theme-btn.dark {
   background: #242424 url('/moon-icon.svg') no-repeat 50% 50%;
   background-size: 30px auto;
+}
+
+.notification{
+  width: 800px;
+  background-color: green;
+  position: fixed;
+  bottom: 0;
+  left: calc(50% - 400px);
+  border: 2px solid #064b17;
+  border-radius: 20px;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-button{
+  margin-left: auto;
+  display: block;
+}
+
+.notification-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.favorite-card{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 10px;
 }
 
 @media (max-width: 885px) {

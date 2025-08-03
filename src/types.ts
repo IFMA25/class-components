@@ -8,6 +8,7 @@ export type ItemData = {
   capital: string;
   population: string;
 };
+
 export type Data = {
   result: Array<ItemData>;
 };
@@ -52,5 +53,8 @@ export type ThemeContextType = {
 
 export type Store = {
   selected: string[];
+  countriesData: ItemData[];
   toggleSelected: (name: string) => void;
+  setCountriesData: (data: ItemData[]) => void;
+  clearAll: () => void;
 };

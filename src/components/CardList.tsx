@@ -21,16 +21,15 @@ function CardList({ data, setDetails }: CardListProps) {
             }}
             className="card-item"
           >
-            <label>
-              <input
-                type="checkbox"
-                checked={isChecked}
-                onChange={(e) => {
-                  e.stopPropagation();
-                  toggleSelected(item.name);
-                }}
-              />
-            </label>
+            <input
+              className="favorite-card"
+              type="checkbox"
+              checked={isChecked}
+              onClick={(e) => e.stopPropagation()}
+              onChange={() => {
+                toggleSelected(item.name);
+              }}
+            />
             <div className="card-img">
               <img src={item.flag} alt={item.name} />
             </div>
