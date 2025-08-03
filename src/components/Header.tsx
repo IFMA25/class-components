@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import ThemeButton from './ThemeButton';
+import { useTheme } from '@utils/useTheme';
 
 function Header() {
+  const { theme } = useTheme();
+
   return (
-    <header className="header">
+    <header className={`header ${theme}`}>
       <nav className="header-nav">
         <NavLink
           to="/"
@@ -17,6 +21,7 @@ function Header() {
           About
         </NavLink>
       </nav>
+      <ThemeButton />
     </header>
   );
 }

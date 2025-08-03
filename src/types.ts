@@ -44,3 +44,8 @@ export type CountryCartProps = {
   data: ItemData[];
   setDetails: (value: string | null) => void;
 };
+
+export type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
