@@ -8,6 +8,7 @@ export type ItemData = {
   capital: string;
   population: string;
 };
+
 export type Data = {
   result: Array<ItemData>;
 };
@@ -36,11 +37,24 @@ export type SearchProps = {
 
 export type CardListProps = {
   data: ItemData[];
-  setDetails: (name: string) => void;
+  setDetails?: (name: string) => void;
 };
 
 export type CountryCartProps = {
   details: string | null;
   data: ItemData[];
   setDetails: (value: string | null) => void;
+};
+
+export type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
+
+export type Store = {
+  selected: string[];
+  countriesData: ItemData[];
+  toggleSelected: (name: string) => void;
+  setCountriesData: (data: ItemData[]) => void;
+  clearAll: () => void;
 };

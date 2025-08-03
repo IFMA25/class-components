@@ -7,6 +7,8 @@ import { useCountriesData } from '@utils/useCountriesData';
 import './Home.css';
 import { useSearchParams } from 'react-router-dom';
 import { useLocalStorage } from '@utils/useLocalStorage';
+import Loader from '@components/Loader';
+import Notification from '@components/Notification';
 
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,7 +62,7 @@ function Home() {
     <main>
       <div className="country-list">
         <Search onSearch={handleSearch} value={searchValue} />
-        {loading && <p className="loader">Loading...</p>}
+        {loading && <Loader />}
         {!loading && result.length > 0 && (
           <>
             <CardList data={result} setDetails={setDetails} />
@@ -85,6 +87,7 @@ function Home() {
           />
         </div>
       )}
+      <Notification />
     </main>
   );
 }
