@@ -1,0 +1,23 @@
+.labelSearch {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.inputSearch {
+  width: 50%;
+  padding: 7px 15px;
+  border-radius: 15px;
+  margin-right: 25px;
+  font-size: 18px;
+}
+
+@media (max-width: 885px) {
+  .inputSearch {
+    width: 60%;
+  }
+}
+@media (max-width: 550px) {
+  .inputSearch {
+    margin-right: 15px;
+  }
+}

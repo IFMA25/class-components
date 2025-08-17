@@ -1,0 +1,60 @@
+.cardList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+  padding: 0;
+}
+
+.cardItem {
+  position: relative;
+  width: calc(100% / 3 - 20px);
+  min-height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cardItem:hover {
+  box-shadow: 0 0px 3px 3px rgb(255, 255, 255);
+}
+
+.cardInfo {
+  padding: 15px;
+  background-color: whitesmoke;
+  color: black;
+  height: 100%;
+}
+
+.cardInfo h3 {
+  font-size: 32px;
+}
+.cardImg {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.favoriteCard {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+}
+@media (max-width: 885px) {
+  .cardList li {
+    width: calc(50% - 20px);
+  }
+}
+@media (max-width: 550px) {
+  .cardList li {
+    width: 100%;
+  }
+}

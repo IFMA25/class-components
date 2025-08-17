@@ -1,0 +1,16 @@
+.themeBtn {
+  width: 60px;
+  height: 60px;
+  color: #f6f6f6;
+  border: 1px solid #242424;
+}
+
+.themeBtn.light {
+  background: #ececec url('/sun-warm-icon.svg') no-repeat 50% 50%;
+  background-size: 40px auto;
+}
+
+.themeBtn.dark {
+  background: #242424 url('/moon-icon.svg') no-repeat 50% 50%;
+  background-size: 30px auto;
+}

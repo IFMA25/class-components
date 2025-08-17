@@ -19,6 +19,10 @@ export async function fetchCountries(value: string, page: number) {
     },
   });
 
+  if (!res.ok) {
+    throw new Error('Failed to fetch countries');
+  }
+
   const fetchData = await res.json();
 
   if (!Array.isArray(fetchData.data)) return { countries: [], totalCount: 0 };
@@ -34,7 +38,6 @@ export async function fetchCountries(value: string, page: number) {
       };
     })
   );
-  console.log(countries, fetchData.metadata.totalCount);
 
   return {
     countries,

@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: 20px;
+}
+.countryList {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultFound {
+  font-size: 48px;
+  color: blue;
+}
+
+@media (max-width: 885px) {
+  .container {
+    padding: 15px;
+  }
+}

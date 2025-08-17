@@ -40,7 +40,7 @@ export type CardListProps = {
   setDetails?: (name: string) => void;
 };
 
-export type CountryCartProps = {
+export type CountryCardProps = {
   details: string | null;
   data: ItemData[];
   setDetails: (value: string | null) => void;
