@@ -3,7 +3,6 @@ import { CountryCardProps } from '@types';
 import styles from './style.module.css';
 
 function CountryCard({ details, data, setDetails }: CountryCardProps) {
-  if (!data) return <div>Loading...</div>;
   if (!details) return null;
 
   const handleClose = () => {

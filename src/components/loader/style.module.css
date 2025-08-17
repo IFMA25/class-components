@@ -23,3 +23,20 @@
 .loader span:nth-child(3) {
   animation-delay: 0.4s;
 }
+
+.loader span {
+  animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
