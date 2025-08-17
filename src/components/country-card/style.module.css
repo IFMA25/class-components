@@ -1,0 +1,6 @@
+.countryDetails {
+  flex: 1;
+  min-width: 0;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}

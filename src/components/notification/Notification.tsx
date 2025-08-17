@@ -1,8 +1,10 @@
+'use client';
 import { useStore } from '@store/useStore';
 import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 import { useCountriesData } from '@utils/useCountriesData';
-import Loader from './Loader';
+import Loader from '@components/loader/Loader';
+import styles from './style.module.css';
 
 const Notification = () => {
   const { selected, countriesData, clearAll, setCountriesData } = useStore();
@@ -56,7 +58,7 @@ const Notification = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="notification">
+    <div className={styles.notification}>
       <button className="close-button" onClick={() => setIsVisible(false)}>
         ×
       </button>
@@ -64,12 +66,12 @@ const Notification = () => {
         Selected countries: <strong>{selected.length}</strong>
       </p>
       {loading ? (
-        <div className="notification-loading">
+        <div>
           <Loader />
           <p>Loading selected countries...</p>
         </div>
       ) : (
-        <div className="notification-buttons">
+        <div className={styles.notificationButtons}>
           <button onClick={clearAll}>Clear all</button>
           <button onClick={exportToCSV}>Export to CSV</button>
         </div>

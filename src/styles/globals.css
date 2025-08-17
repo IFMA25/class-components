@@ -50,6 +50,24 @@ img {
   height: auto;
 }
 
-h1{
+h1 {
   font-size: 48px;
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.close-button {
+  margin-left: auto;
+  display: block;
+}
+
+.container {
+  margin-top: 150px;
+  margin-bottom: 50px;
 }

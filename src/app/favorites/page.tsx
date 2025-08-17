@@ -1,7 +1,7 @@
 'use client';
 import { useStore } from '@store/useStore';
-import CardList from '@components/CardList';
-import Loader from '@components/Loader';
+import CardList from '@components/card-list/CardList';
+import Loader from '@components/loader/Loader';
 
 const Favorites = () => {
   const countriesData = useStore((state) => state.countriesData);
@@ -11,8 +11,8 @@ const Favorites = () => {
 
   return (
     <>
-      <h1>Favorites country</h1>
-      <main>
+      <div className="container">
+        <h1>Favorites country</h1>
         <div className="country-list">
           {loading && <Loader />}
           {!loading && countriesData.length === selected.length && (
@@ -20,7 +20,7 @@ const Favorites = () => {
           )}
           {!loading && countriesData.length === 0 && <p>Not found</p>}
         </div>
-      </main>
+      </div>
     </>
   );
 };

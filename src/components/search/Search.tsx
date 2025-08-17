@@ -1,5 +1,6 @@
 import { SearchProps } from '@types';
 import { useState, useEffect } from 'react';
+import styles from './style.module.css';
 
 function Search({ onSearch, value }: SearchProps & { value: string }) {
   const [inputValue, setInputValue] = useState(value);
@@ -16,15 +17,15 @@ function Search({ onSearch, value }: SearchProps & { value: string }) {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <p className="label-search">Enter country name</p>
+        <p className={styles.labelSearch}>Enter country name</p>
         <input
           type="text"
-          className="input-search"
+          className={styles.inputSearch}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
       </label>
-      <button type="submit" className="button-search" data-testid="search">
+      <button type="submit" data-testid="search">
         Search
       </button>
     </form>

@@ -1,4 +1,4 @@
-.rss-logo {
+.rssLogo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,13 +7,13 @@
   font-weight: 600;
 }
 
-.rss-link {
+.rssLink {
   display: block;
   margin-right: 10px;
   max-width: 50px;
 }
 
-.rss-link img {
+.rssLink img {
   max-width: 100%;
   height: auto;
 }

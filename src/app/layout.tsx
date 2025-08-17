@@ -1,12 +1,6 @@
-import '../styles/index.css';
-import ThemeProvider from '@components/ThemeProvider';
-import Header from '@components/Header';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Vite + React + TS',
-  description: 'My App migrated from Vite to Next.js',
-};
+import ThemeProvider from '@components/theme/ThemeProvider';
+import Header from '@components/header/Header';
+import '@styles/globals.css';
 
 export default function RootLayout({
   children,
@@ -18,7 +12,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Header />
-          {children}
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>

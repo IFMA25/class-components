@@ -1,18 +1,13 @@
-import Header from '@components/Header';
-import About from './pages/About';
-import Home from './pages/Home';
-import { Route, Routes } from 'react-router-dom';
-import Favorites from './pages/Favorites';
+import Header from '@components/header/Header';
+import Link from 'next/link';
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="favorites" element={<Favorites />} />
-      </Routes>
+      <Link href="/">Home</Link>
+      <Link href="/about">About</Link>
+      <Link href="/favorites">Favorites</Link>
     </>
   );
 }

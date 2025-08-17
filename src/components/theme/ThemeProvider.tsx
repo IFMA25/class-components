@@ -1,3 +1,4 @@
+'use client';
 import { ThemeContext } from '@utils/themeContext';
 import { useLocalStorage } from '@utils/useLocalStorage';
 import { ReactNode, useEffect } from 'react';
@@ -10,11 +11,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const root = document.getElementById('root');
-    if (!root) return;
-
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
+    const html = document.documentElement;
+    html.classList.remove('light', 'dark');
+    html.classList.add(theme);
   }, [theme]);
 
   return (

@@ -1,90 +1,94 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Search from '../components/Search';
-import CardList from '@components/CardList';
-import Pagination from '@components/Pagination';
-import CountryCart from '@components/CountryCart';
-import Loader from '@components/Loader';
-import Notification from '@components/Notification';
+import Search from '@components/search/Search';
+import CardList from '@components/card-list/CardList';
+import Pagination from '@components/pagination/Pagination';
+import { useCountriesData } from '@utils/useCountriesData';
 import { useLocalStorage } from '@utils/useLocalStorage';
-import './home.module.css';
+import Loader from '@components/loader/Loader';
+import Notification from '@components/notification/Notification';
+import { useSearchParams, useRouter } from 'next/navigation';
+import styles from './home.module.css';
+import CountryCard from '@components/country-card/CountryCard';
 
-const LIMIT = 6;
+export default function HomePage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-export default function Home() {
+  const [totalPages, setTotalPages] = useState(0);
   const [searchValue, setSearchValue] = useLocalStorage('value', '');
-  const [countries, setCountries] = useState<any[]>([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [details, setDetails] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const res = await fetch(
-        `/api/countries?search=${searchValue}&page=${currentPage + 1}`
-      );
-      const data = await res.json();
-      setCountries(data.countries);
-      setTotalCount(data.totalCount);
-    } catch (err) {
-      console.error(err);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { searchData, result } = useCountriesData({
+    onTotalPage: setTotalPages,
+  });
+
+  const details = searchParams?.get('details');
+  const currentPage = Math.max(
+    0,
+    parseInt(searchParams?.get('page') ?? '1', 10) - 1
+  );
 
   useEffect(() => {
-    fetchData();
-  }, [searchValue, currentPage]);
+    setLoading(true);
+    searchData(searchValue, currentPage).finally(() => setLoading(false));
+  }, [searchValue, currentPage, searchData]);
+
+  const updateParams = (params: Record<string, string>) => {
+    const query = new URLSearchParams(params).toString();
+    router.push(`/?${query}`);
+  };
 
   const handleSearch = (value: string) => {
     setSearchValue(value);
-    setCurrentPage(0);
+    updateParams({ page: '1' });
   };
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
+    const params: Record<string, string> = { page: (newPage + 1).toString() };
+    if (details) params.details = details;
+    updateParams(params);
+  };
+
+  const setDetails = (value: string | null) => {
+    const params: Record<string, string> = {
+      page: (currentPage + 1).toString(),
+    };
+    if (value) params.details = value;
+    updateParams(params);
   };
 
   const isCountryPage = Boolean(details);
 
   return (
-    <main>
-      <div className="country-list">
+    <div className={`container ${styles.container}`}>
+      <div className={styles.countryList}>
         <Search onSearch={handleSearch} value={searchValue} />
-        {isLoading && <Loader />}
-        {isError && <p>Error data fetch</p>}
-        {!isLoading && countries.length > 0 && (
+        {loading && <Loader />}
+        {!loading && result.length > 0 && (
           <>
-            <CardList data={countries} setDetails={setDetails} />
+            <CardList data={result} setDetails={setDetails} />
             <Pagination
               currentPage={currentPage}
-              totalPages={Math.ceil(totalCount / LIMIT)}
+              totalPages={totalPages}
               changePage={handlePageChange}
             />
           </>
         )}
-        {!isLoading && countries.length === 0 && (
-          <p className="result-found">Country not found</p>
+        {!loading && result.length === 0 && (
+          <p className={styles.resultFound}>Country not found</p>
         )}
       </div>
 
       {isCountryPage && (
-        <div className="country-details">
-          <CountryCart
-            details={details}
-            data={countries}
-            setDetails={setDetails}
-          />
-        </div>
+        <CountryCard
+          details={details ?? ''}
+          data={result}
+          setDetails={setDetails}
+        />
       )}
       <Notification />
-    </main>
+    </div>
   );
 }

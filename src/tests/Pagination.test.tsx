@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import Pagination from '@components/Pagination';
+import Pagination from '@components/pagination/Pagination';
 import { afterEach } from 'node:test';
 
 const changePageMock = vi.fn();

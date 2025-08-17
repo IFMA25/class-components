@@ -1,4 +1,5 @@
 import { PaginationProps } from '@types';
+import styles from './style.module.css';
 
 function Pagination(props: PaginationProps) {
   const { currentPage, changePage, totalPages } = props;
@@ -16,11 +17,11 @@ function Pagination(props: PaginationProps) {
   };
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
       <button onClick={handlePrevClick} disabled={currentPage === 0}>
         {'<<'}
       </button>
-      <span className="current-page">{currentPage + 1}</span>
+      <span className={styles.currentPage}>{currentPage + 1}</span>
       <button
         onClick={handleNextClick}
         disabled={currentPage + 1 >= totalPages}

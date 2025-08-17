@@ -1,6 +1,6 @@
 // __tests__/Header.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
-import Header from '@components/Header';
+import Header from '@components/header/Header';
 import { describe, it, beforeEach, vi, expect } from 'vitest';
 
 const onSearch = vi.fn();

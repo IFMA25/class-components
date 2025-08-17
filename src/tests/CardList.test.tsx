@@ -1,7 +1,7 @@
 // __tests__/Header.test.tsx
 import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, beforeEach, vi, expect, afterEach } from 'vitest';
-import CardList from '@components/CardList';
+import CardList from '@components/card-list/CardList';
 
 const mockTotalPage = vi.fn();
 

@@ -1,13 +1,14 @@
 import { useStore } from '@store/useStore';
 import { CardListProps } from '@types';
-import './style.css';
+import Image from 'next/image';
+import styles from './style.module.css';
 
 function CardList({ data, setDetails }: CardListProps) {
   const selected = useStore((state) => state.selected);
   const toggleSelected = useStore((state) => state.toggleSelected);
 
   return (
-    <ul className="card-list">
+    <ul className={styles.cardList}>
       {data.map((item) => {
         const isChecked = selected.includes(item.name);
 
@@ -19,10 +20,10 @@ function CardList({ data, setDetails }: CardListProps) {
                 setDetails(item.name);
               }
             }}
-            className="card-item"
+            className={styles.cardItem}
           >
             <input
-              className="favorite-card"
+              className={styles.favoriteCard}
               type="checkbox"
               checked={isChecked}
               onClick={(e) => e.stopPropagation()}
@@ -30,10 +31,10 @@ function CardList({ data, setDetails }: CardListProps) {
                 toggleSelected(item.name);
               }}
             />
-            <div className="card-img">
-              <img src={item.flag} alt={item.name} />
+            <div className={styles.cardImg}>
+              <Image src={item.flag} alt={item.name} width={320} height={200} />
             </div>
-            <div className="card-info">
+            <div className={styles.cardInfo}>
               <h3>{item.name}</h3>
             </div>
           </li>
