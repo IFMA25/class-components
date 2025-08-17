@@ -1,0 +1,19 @@
+.rss-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(185, 137, 5);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.rss-link {
+  display: block;
+  margin-right: 10px;
+  max-width: 50px;
+}
+
+.rss-link img {
+  max-width: 100%;
+  height: auto;
+}
